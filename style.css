@@ -1,0 +1,231 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  background: #faf6ed;
+  color: #5f574f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 280px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px 16px;
+  display: grid;
+  place-items: center;
+  background: #faf6ed;
+}
+
+button {
+  font: inherit;
+}
+
+.game {
+  position: relative;
+  width: min(100%, 440px);
+}
+
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0;
+  color: #776e65;
+  font-size: clamp(3rem, 16vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.08em;
+}
+
+.game-actions {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.score-box {
+  min-width: 76px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: #bbada0;
+  color: #ffffff;
+}
+
+.score-box span {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.score-box strong {
+  font-size: 1.25rem;
+}
+
+.primary-button,
+.secondary-button,
+.direction-button {
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.primary-button {
+  padding: 10px 14px;
+  background: #8f7a66;
+  color: #ffffff;
+}
+
+.primary-button:hover,
+.primary-button:focus-visible {
+  background: #796755;
+}
+
+.secondary-button {
+  padding: 10px 14px;
+  background: #eee4da;
+  color: #655d55;
+}
+
+button:focus-visible {
+  outline: 3px solid #f59563;
+  outline-offset: 2px;
+}
+
+.board {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: clamp(7px, 2.4vw, 10px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: clamp(7px, 2.4vw, 10px);
+  border-radius: 10px;
+  background: #bbada0;
+}
+
+.tile {
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: #cdc1b4;
+  color: #776e65;
+  font-size: clamp(1.3rem, 9vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.tile-2 { background: #eee4da; }
+.tile-4 { background: #ede0c8; }
+.tile-8 { background: #f2b179; color: #f9f6f2; }
+.tile-16 { background: #f59563; color: #f9f6f2; }
+.tile-32 { background: #f67c5f; color: #f9f6f2; }
+.tile-64 { background: #f65e3b; color: #f9f6f2; }
+.tile-128 { background: #edcf72; color: #f9f6f2; font-size: clamp(1.15rem, 7.5vw, 2.2rem); }
+.tile-256 { background: #edcc61; color: #f9f6f2; font-size: clamp(1.15rem, 7.5vw, 2.2rem); }
+.tile-512 { background: #edc850; color: #f9f6f2; font-size: clamp(1.15rem, 7.5vw, 2.2rem); }
+.tile-1024 { background: #edc53f; color: #f9f6f2; font-size: clamp(0.95rem, 6.5vw, 1.8rem); }
+.tile-2048 { background: #edc22e; color: #ffffff; font-size: clamp(0.95rem, 6.5vw, 1.8rem); }
+.tile-super { background: #3c3a32; color: #ffffff; font-size: clamp(0.85rem, 5.5vw, 1.55rem); }
+
+.direction-controls {
+  width: min(230px, 65vw);
+  margin: 18px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.direction-button {
+  min-height: 52px;
+  background: #8f7a66;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.direction-button:hover,
+.direction-button:focus-visible {
+  background: #796755;
+}
+
+.direction-button.up { grid-column: 2; }
+.direction-button.left { grid-column: 1; grid-row: 2; }
+.direction-button.down { grid-column: 2; grid-row: 2; }
+.direction-button.right { grid-column: 3; grid-row: 2; }
+
+.instructions {
+  margin: 16px 4px 0;
+  color: #776e65;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgb(250 246 237 / 88%);
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.modal {
+  width: min(100%, 320px);
+  padding: 24px;
+  border: 2px solid #bbada0;
+  border-radius: 12px;
+  background: #fffaf0;
+  box-shadow: 0 12px 32px rgb(95 87 79 / 18%);
+  text-align: center;
+}
+
+.modal h2 {
+  margin: 0 0 8px;
+  color: #776e65;
+  font-size: 2rem;
+}
+
+.modal p {
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+@media (max-width: 360px) {
+  body {
+    padding: 16px 10px;
+  }
+
+  .game-header {
+    align-items: flex-end;
+  }
+
+  .game-actions {
+    flex-direction: column;
+  }
+
+  .score-box {
+    min-width: 0;
+  }
+}
